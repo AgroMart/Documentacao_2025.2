@@ -1,0 +1,25 @@
+/* deixa o header inteiro verde */
+header {
+  background-color: rgba(240, 248, 241, 0.29) !important;
+  color: white !important;
+}
+
+/* força a nav dentro do header a herdar */
+header nav {
+  background-color: transparent !important; /* transparente, só o header fica verde */
+  color: inherit !important;
+}
+
+/* links */
+header a {
+  color: rgb(24, 23, 23) !important;
+}
+
+/* campo de busca */
+header input {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+header input::placeholder {
+  color: rgba(255,255,255,0.8);
+}

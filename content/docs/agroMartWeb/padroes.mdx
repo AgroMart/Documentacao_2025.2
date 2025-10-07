@@ -1,0 +1,101 @@
+---
+title: Padrões de Desenvolvimento
+description: Regras e boas práticas para contribuir no AgroMart Web
+full: true
+---
+
+## Padrões de Desenvolvimento — AgroMart Web
+
+O **AgroMart Web** é a plataforma administrativa destinada aos produtores, construída em **Next.js** com **TypeScript** e integrada à **AgroMart API (Strapi)**.  
+Para manter a consistência e qualidade do projeto, todo desenvolvimento deve seguir este padrão.  
+
+---
+
+### Fluxo de Desenvolvimento
+
+1. **Definição da Tarefa**
+   - Toda alteração deve partir de uma tarefa definida no **Kanban Board**.  
+   - A tarefa deve estar associada a um **requisito válido** ou issue aprovada.  
+   - Sem aprovação prévia, nenhuma implementação deve ser iniciada.  
+
+2. **Criação da Branch**
+   - Crie branches a partir de `devel`.  
+   - Padrões:  
+     - `feature/nome-da-feature` para novas funcionalidades.  
+     - `fix/nome-do-bug` para correções.  
+     - `docs/nome-da-doc` para documentação.  
+
+3. **Desenvolvimento**
+   - Seguir boas práticas de **Next.js + React** com **TypeScript**.  
+   - **Componentes reutilizáveis** devem ficar em `src/components`.  
+   - **Hooks** personalizados em `src/hooks`.  
+   - **Integrações com API** centralizadas em `src/services` (Axios recomendado).  
+   - **Configurações globais** (tema, constantes) em `src/config`.  
+   - **Estilização** deve priorizar CSS-in-JS (styled-components, tailwind) ou módulos CSS conforme o padrão definido.  
+   - **Internacionalização** (i18n) deve ser usada para strings, evitando textos fixos em componentes.  
+
+4. **Commits**
+   - Mensagens em **português no gerúndio**.  
+   - Sempre referenciar a issue ou tarefa:  
+     ```text
+     (#72) Criando dashboard de lojas
+     (#81) Ajustando fluxo de autenticação
+     ```
+
+5. **Testes Locais**
+   - Rodar `npm run dev` ou `yarn dev` e validar a execução em `http://localhost:3000`.  
+   - Checar warnings no console e corrigir antes do commit.  
+   - Testar pelo menos os fluxos de login, cadastro de loja e cadastro de produto.  
+
+6. **Pull Request**
+   - Abrir PR para `devel`, nunca direto em `master`.  
+   - O PR deve conter:
+     - Descrição clara da mudança.  
+     - Prints (ou vídeos) de telas alteradas/adicionadas.  
+     - Referência ao número da issue/tarefa.  
+   - Necessário pelo menos **1 aprovação** antes do merge.  
+
+---
+
+### Regras Obrigatórias
+
+<Callout type="warning" title="Obrigatório">
+- Não desenvolver sem tarefa definida no **Kanban Board**.  
+- Cada PR deve conter apenas **uma alteração específica**.  
+- Seguir as instruções do **Guia de Contribuição**.  
+- Respeitar a política de **commits** e **branches**.
+</Callout>
+
+---
+
+### Boas Práticas
+
+- Prefira **componentes pequenos, desacoplados e reutilizáveis**.  
+- Use **TypeScript** com tipagem estrita para evitar erros em tempo de execução.  
+- Centralize **requisições HTTP** em `src/services`.  
+- Utilize **variáveis de ambiente** documentadas em `.env.local`.  
+- Evite duplicação de código → crie **hooks** ou **utils** para lógica repetida.  
+- Mantenha consistência visual utilizando **tema unificado**.  
+- Atualize a documentação sempre que houver impacto em funcionalidades.  
+
+---
+
+### Exemplo de Fluxo Real
+
+1. Tarefa no Kanban: *“Implementar página de relatórios”* (#88).  
+2. Criação da branch:  
+   ```bash
+   git checkout -b feature/pagina-relatorios
+   ```
+3. Desenvolvimento em src/pages/reports/index.tsx + componentes auxiliares em src/components/Reports.
+
+4. Commit:
+
+```bash
+git commit -m "(#88) Criando página de relatórios"
+```
+5. PR aberto para devel, revisado e aprovado.
+
+6. Merge realizado seguindo as regras.
+
+<Callout type="tip" title="Dica"> Seguir este padrão garante que o AgroMart Web evolua de forma estruturada, clara e segura, mantendo a consistência entre todos os colaboradores do projeto. </Callout>

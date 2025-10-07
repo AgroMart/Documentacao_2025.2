@@ -1,0 +1,69 @@
+---
+title: Guia de Instalação
+description: Passo a passo para instalar e executar o AgroMart Mobile em ambiente de desenvolvimento
+full: true
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+
+## Guia de Instalação do AgroMart Mobile
+
+O **AgroMart Mobile** é um aplicativo desenvolvido em **React Native** com **Expo** e **TypeScript**, projetado para ser multiplataforma (Android/iOS).  
+Este guia descreve os requisitos e o processo de instalação para rodar o projeto em ambiente local.
+
+---
+
+### Pré-requisitos
+
+Antes de iniciar, certifique-se de ter os seguintes itens configurados:
+
+- **Node.js** (versão recomendada: LTS 18+)  
+- **Yarn** (gerenciador de pacotes)  
+- **Expo CLI** (`npm install -g expo-cli`)  
+- **Emulador Android Studio** ou **Expo Go** (disponível na PlayStore/iOS) para execução em dispositivos móveis  
+- **AgroMart API** rodando localmente ou em ambiente remoto (necessário para o fornecimento dos dados)  
+
+---
+
+### Clonando o Repositório
+
+Clone o repositório oficial do AgroMart Mobile:
+
+```bash
+git clone https://github.com/AgroMart/mobile-client
+cd mobile-client
+```
+
+### Instalando Dependências
+Com o projeto dentro da pasta, execute:
+
+```bash
+yarn install
+
+```
+Isso instalará todas as dependências necessárias, incluindo bibliotecas do React Native, Expo e integrações.
+
+### Executando o Projeto
+Inicie o servidor de desenvolvimento com:
+
+
+``` bash
+yarn start
+
+```
+Esse comando abrirá o Expo DevTools no navegador.
+A partir dele você pode:
+
+- Ler o QR Code com o aplicativo Expo Go (Android/iOS) para rodar no dispositivo físico;
+
+- Rodar no emulador Android configurado via Android Studio;
+
+- Rodar no simulador iOS (caso esteja em macOS com Xcode instalado).
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
+  <Card 
+    title="Repositório AgroMart (Mobile)" 
+    href="https://github.com/AgroMart/mobile-client"
+    style={{ minWidth: "300px", textAlign: "center" }}
+  />
+</div>

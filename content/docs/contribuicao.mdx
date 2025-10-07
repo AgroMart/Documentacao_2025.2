@@ -1,0 +1,100 @@
+---
+title: Guia de Contribuição
+description: Como colaborar com o desenvolvimento do AgroMart
+full: true
+---
+
+## Guia de Contribuição para o Agromart 
+Agradecemos por dedicar seu tempo e interesse em contribuir para o nosso projeto!  
+Sua colaboração é essencial para que possamos evoluir continuamente e entregar soluções cada vez melhores.  
+
+Antes de começar, pedimos que leia atentamente este documento: ele vai orientar sobre as práticas recomendadas e o fluxo de contribuição, garantindo que sua participação seja clara, produtiva e integrada ao trabalho da comunidade.
+
+---
+
+### Como Contribuir
+
+1. Crie um **fork** do projeto.  
+2. Clone o fork criado em sua máquina local.  
+3. Crie uma branch para sua contribuição:  
+
+   ```bash
+   git checkout -b minha-contribuicao
+   ```
+4. Realize as alterações em sua branch.
+
+5. Teste as alterações localmente.
+
+Faça um commit com uma mensagem clara e descritiva:
+
+ ```bash
+
+git commit -m "Adiciona funcionalidade X"
+ ```
+
+6. Faça o push da branch para o seu fork:
+
+ ```bash
+git push origin minha-contribuicao
+ ```
+
+7. Abra um Pull Request para a branch master do repositório original e aguarde a revisão.
+
+<Callout type="info" title="Políticas de Pull Request"> Cada Pull Request deve conter apenas **uma funcionalidade** ou **correção de bug**. A mensagem de commit deve ser **descritiva e objetiva**. O Pull Request deve ter **pelo menos um revisor** antes de ser mesclado. </Callout>
+
+### Regras de Contribuição
+
+Para manter a qualidade do projeto, siga as diretrizes abaixo:
+
+- Escreva código claro e bem documentado;
+- Siga as boas práticas recomendadas para a linguagem e framework;
+- Teste o código antes de enviar a contribuição;
+- Cada Pull Request deve ser focado em uma alteração específica;
+- Mensagens de commit devem ser descritivas e objetivas.
+
+### Política de Commits
+
+- Commits devem ser redigidos em português e no gerúndio;
+- Devem ser simples e concisos, com títulos curtos;
+
+O padrão deve ser:
+
+ ```bash
+
+(#NUMERO_DA_ISSUE) 
+Mensagem
+ ```
+
+Exemplo:
+
+ ```bash
+(#26) Criando componente menu
+ ```
+
+### Política de Branches
+#### Padrões de nomenclatura:
+- Features: feature/nome-da-feature
+- Correções de bugs: fix/nome-do-bug
+- Documentação: docs/nome-da-doc
+- Outros: siga a convenção apropriada para o tipo de alteração.
+
+### Bugs e Problemas
+Se você encontrar um bug ou tiver algum problema com o projeto:
+
+- Abra uma issue detalhando o problema encontrado;
+- Sempre que possível, adicione prints ou logs para facilitar a reprodução.
+
+Nós ficaremos felizes em ajudar a solucionar o problema!
+
+### Licença
+Ao contribuir para o projeto, você concorda que sua contribuição será licenciada sob a mesma licença do projeto original.
+
+## Explore o AgroMart
+
+<Cards columns={2}>
+  <Card title="Aplicativo AgroMart (Mobile)" href="https://github.com/AgroMart/mobile-client">
+  </Card>
+
+  <Card title="Plataforma AgroMart (Web)" href="https://github.com/AgroMart/agromart-web">
+  </Card>
+</Cards>

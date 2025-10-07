@@ -1,13 +1,56 @@
 ---
-title: Hello World
-description: Your first document
+title: AgroMart
+full: true
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+import Carousel from '../Carousel';
 
-## What is Next?
+![Capa do AgroMart](/img/Pag_inicial.jpeg)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+<div style={{ textAlign: "justify", lineHeight: "1.6" }}>
+O AgroMart nasceu para transformar a forma como nos relacionamos com a agricultura familiar. Criado durante um Hackathon na UnB – FGA em 2020, no auge da pandemia, o projeto surgiu de um desafio simples e poderoso: aproximar agricultores e consumidores em um momento em que a conexão era mais necessária do que nunca.
+
+Mais do que uma solução tecnológica, o AgroMart é um movimento. Uma plataforma que coloca o pequeno agricultor no centro, dando visibilidade à sua produção e garantindo que cada colheita encontre destino certo. Ao mesmo tempo, abre caminho para que consumidores descubram alimentos frescos, saudáveis e de qualidade, vindos direto de quem planta.
+
+Inspirado no modelo de CSA (Community Supported Agriculture), o AgroMart fortalece comunidades, cria laços de confiança e promove uma economia mais justa e sustentável. É sobre reduzir distâncias, valorizar o que é local e construir uma rede onde todos ganham: o agricultor que escoa sua produção, o consumidor que encontra comida de verdade, e a sociedade que se beneficia de uma agricultura mais próxima e humana.
+</div>
+
+---
+
+## Conheça o que é uma CSA
+
+<Carousel
+  maxHeight={420}  
+  items={[
+    {
+      title: "Comunidade CSA",
+      description: "Parceria transforma consumidores em coagricultores.",
+      img: "/img/CSA.png",
+      href: "https://www.gazetadopovo.com.br/agronegocio/mercado/parceria-transforma-consumidores-em-coagricultores-7p7jkku0vm0m6ds7nsa8zu9fj/"
+    },
+    {
+      title: "Transparência e Origem",
+      description: "Produtos de origem conhecida e relação direta com quem produz.",
+      img: "/img/origem.png",
+      href: "https://sebraepr.com.br/impulsiona/csa-comunidade-que-sustenta-a-agricultura/?srsltid=AfmBOoqjeBrYT1dipT8f7cXHNmEgm3yamL-Oya9prVa1uDw-kAOr7vY0"
+    },
+    {
+      title: "Economia Local",
+      description: "CSA é um caminho que proporciona mais sustentabilidade",
+      img: "/img/economia.png",
+      href: "https://csabrasil.org/csa/sobre/"
+    }
+  ]}
+/>
+
+---
+
+## Explore o AgroMart
+
+<Cards columns={2}>
+  <Card title="Aplicativo AgroMart (Mobile)" href="https://github.com/AgroMart/mobile-client">
+  </Card>
+
+  <Card title="Plataforma AgroMart (Web)" href="https://github.com/AgroMart/agromart-web">
+  </Card>
 </Cards>

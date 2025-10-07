@@ -1,0 +1,143 @@
+---
+title: Arquitetura do sistema
+description: Organização, camadas e integração entre o AgroMart Web e a AgroMart API
+full: true
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+
+O **AgroMart Web** e a **AgroMart API** formam o núcleo administrativo do ecossistema AgroMart. Enquanto o **Web** atua como painel de gestão para o agricultor, a **API** (implementada em **Strapi**) centraliza e provê todos os dados necessários, garantindo consistência com o **Mobile**.  
+
+Essa integração permite que os produtores administrem suas lojas, cadastrem produtos e mantenham seus catálogos sempre atualizados, enquanto consumidores acessam as mesmas informações em tempo real pelo aplicativo.
+
+---
+
+### Objetivo e Escopo
+
+- **AgroMart Web**: servir como Plataforma administrativa para agricultores, oferecendo um painel simples e acessível para gerenciar lojas e produtos.  
+- **AgroMart API**: funcionar como única fonte de verdade, armazenando e disponibilizando dados (produtores, lojas, produtos, pedidos e planos).  
+
+<Callout type="info" title="Integração">
+  O Web atua como Interface visual do agricultor, enquanto a API é a camada de dados que garante sincronização contínua com o Mobile.
+</Callout>
+
+---
+
+### Estrutura do Repositório Web
+
+O repositório do AgroMart Web foi planejado com **Next.js + React + TypeScript** para ser modular e escalável:
+
+- **`/public/`** → arquivos estáticos (imagens, ícones, logotipos);  
+- **`/pages/`** → definição de rotas e páginas principais (Login, Dashboard, Cadastro de Produtos);  
+- **`/components/`** → componentes reutilizáveis (formularios, tabelas, botões, cards);  
+- **`/styles/`** → estilização (CSS Modules, Tailwind ou styled-components);  
+- **`/services/`** → camada de integração com a API, via Axios;  
+- **`/contexts/`** → gerenciamento de estado global (Context API);  
+- **`/utils/`** → utilitários (tratamento de datas, máscaras, validações);  
+- **`/hooks/`** → hooks customizados para abstrair lógicas recorrentes.  
+
+---
+
+### Estrutura do Repositório API (Strapi)
+
+A API do AgroMart segue a arquitetura padrão do **Strapi v4**:
+
+- **`/src/api/*`** → content-types (produtos, lojas, pedidos, assinaturas), cada um com rotas, controllers e services;  
+- **`/config/*`** → configuração de ambiente, middlewares, CORS e segurança;  
+- **`/database/*`** → definição do cliente do banco (Postgres);  
+- **`/public/uploads/`** → armazenamento local de mídia (em produção usa-se provider externo: S3, GCS, Cloudinary);  
+- **`/src/extensions/*`** → extensões de plugins, como users-permissions e upload.  
+
+**Domínios principais:**  
+- **Produtor (`user`)** com role `producer`;  
+- **Loja (`store`)** com dados básicos e localização;  
+- **Produto (`product`)** com preço, descrição, imagens;  
+- **Pedido (`order`)** com itens e status;  
+- **Assinatura (`plan/subscription`)** para CSAs;  
+- **Endereço (`address`)** vinculado ao consumidor.  
+
+---
+
+### Fluxo de Dados
+
+1. **Login e Autenticação**  
+   - O agricultor acessa o Web → login via API (JWT).  
+   - JWT garante segurança e papéis (`producer`, `consumer`, `admin`).  
+
+2. **Gestão de Lojas e Produtos (Web)**  
+   - O produtor cadastra/edita informações → Web envia via Axios → API persiste no banco.  
+
+3. **Consumo pelo Mobile**  
+   - Consumidor consulta lojas/produtos → Mobile consome diretamente a API → dados refletidos em tempo real.  
+
+4. **Pedidos e Assinaturas**  
+   - Mobile cria pedidos/assinaturas → API armazena → Web exibe relatórios simplificados para o agricultor.  
+
+---
+
+### Camadas Principais
+
+#### AgroMart Web
+- **Interface**: Next.js + React, responsiva e acessível.  
+- **Estado**: Context API (com possível evolução para Redux/Zustand).  
+- **Serviços**: integração centralizada com a API (Axios).  
+- **Estilização**: CSS Modules/styled-components.  
+
+#### AgroMart API
+- **Core**: Node.js + Strapi.  
+- **Autenticação**: JWT + roles (`producer`, `consumer`, `admin`).  
+- **Banco de Dados**: PostgreSQL.  
+- **Mídia**: plugin de upload (local ou providers externos).  
+- **Endpoints REST**: content-types com filtros, paginação e populate.  
+
+---
+
+### Configuração e Ambiente
+
+Exemplo `.env` para a API:
+
+```bash
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=...
+JWT_SECRET=...
+DATABASE_CLIENT=postgres
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_NAME=agromart
+DATABASE_USERNAME=agromart_user
+DATABASE_PASSWORD=******
+```
+---
+
+### Ciclo de Requisições (alto nível)
+
+- **Web (produtor)** cria/edita loja e produtos → **API** persiste;  
+- **Mobile (consumidor)** consulta lojas/produtos → **API** responde;  
+- **Mobile** cria pedidos/assinaturas → **API** registra e vincula ao consumidor;  
+- Atualizações fluem para **todos os canais**, mantendo **consistência**.  
+
+---
+
+### Qualidade, Logs e Observabilidade
+
+- **Validação:** schemas do Strapi garantem integridade;  
+- **Policies/Middlewares:** aplicados para auditoria, sanitização e autorização;  
+- **Logs:** padronizados em JSON, com integração a ELK/Loki/CloudWatch;  
+- **CORS e rate limiting:** configurados para segurança.  
+
+---
+
+### Evolução Arquitetural
+
+- **Camada visual mais amigável no Web,** reduzindo a complexidade do Strapi;  
+- **Normalização de responses** na API para diminuir acoplamento;  
+- **Cache de leitura** para catálogos de produtos de alta demanda;  
+- **Filas/Jobs assíncronos** (notificações, imagens);  
+- **Versionamento de API** (`/api/v1`) e **feature flags**.  
+
+<Callout type="tip" title="Integração">
+  O <strong>AgroMart Web</strong> é a camada <strong>visual e administrativa</strong>;<br/>
+  A <strong>AgroMart API</strong> é a camada <strong>de dados e regras de negócio</strong>;<br/>
+ 
+</Callout>
