@@ -1,45 +1,33 @@
-# fumadocs-ui-template
+<h1 align="center">
+  📚 Documentação Oficial — AgroMart
+</h1>
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AgroMart/Documentacao_2025.2/main/public/img/logo.png" alt="AgroMart Logo" width="140"/>
+</p>
 
-Run development server:
+---
 
-```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
-```
+## 📖 Sobre o AgroMart
 
-Open http://localhost:3000 with your browser to see the result.
+O **AgroMart** é um projeto voltado para fortalecer a **agricultura familiar**, aproximando agricultores de consumidores através de soluções digitais acessíveis.  
+Seu propósito é garantir que alimentos frescos, saudáveis e de qualidade cheguem às pessoas, ao mesmo tempo em que assegura **maior visibilidade e escoamento justo da produção** dos agricultores.  
 
-## Explore
+Essa iniciativa busca promover uma **economia mais solidária e sustentável**, criando uma rede de confiança entre produtores e consumidores.
 
-In the project, you can see:
+---
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+## 🌐 Esta Documentação
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+Esta é a **documentação oficial** do AgroMart.  
+Ela servirá como **base de referência para o desenvolvimento** e a evolução das duas principais frentes do projeto:
 
-### Fumadocs MDX
+- **AgroMart Web** → plataforma administrativa para agricultores gerenciarem lojas, produtos e informações.  
+- **AgroMart Mobile** → aplicativo multiplataforma que conecta consumidores a agricultores de forma prática e transparente.  
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+---
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+<p align="center">
+  ✨ Esta documentação é a espinha dorsal do AgroMart, orientando o planejamento, desenvolvimento e manutenção contínua do projeto. ✨
+</p>
 
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
