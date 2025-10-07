@@ -24,10 +24,4 @@
     "@types/mdx": "^2.0.13"
   }
 }
-{
-  "scripts": {
-    "build": "next build",
-    "export": "next export -o out",
-    "build:pages": "npm run build && npm run export"
-  }
-}
+
