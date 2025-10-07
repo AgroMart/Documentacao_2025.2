@@ -1,10 +1,12 @@
-import { createMDX } from 'fumadocs-mdx/next';
-
-const withMDX = createMDX();
+const isProd = process.env.NODE_ENV === 'production'
+const repo = 'Documentacao_2025.2'
 
 /** @type {import('next').NextConfig} */
-const config = {
-  reactStrictMode: true,
-};
+const nextConfig = {
+  output: 'export',               // necessário para GitHub Pages
+  images: { unoptimized: true },  // desativa otimização de imagens no server
+  basePath: isProd ? `/${repo}` : '',
+  assetPrefix: isProd ? `/${repo}/` : '',
+}
 
-export default withMDX(config);
+export default nextConfig
